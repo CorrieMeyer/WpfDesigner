@@ -26,6 +26,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using ICSharpCode.WpfDesign.Adorners;
 using ICSharpCode.WpfDesign.Designer.Controls;
+using ICSharpCode.WpfDesign.Designer.Services;
 using ICSharpCode.WpfDesign.UIExtensions;
 using ICSharpCode.WpfDesign.Designer.Xaml;
 using ICSharpCode.WpfDesign.Extensions;
@@ -398,8 +399,8 @@ namespace ICSharpCode.WpfDesign.Designer
 		
 		private void DesignPanel_KeyUp(object sender, KeyEventArgs e)
 		{
-			if (e.Key == Key.Left || e.Key == Key.Right || e.Key == Key.Up || e.Key == Key.Down)
-			{
+			if (!Context.Services.AllServices.Any(a => a is DragMoveMouseGesture) && // if not busy with mouse DragMoveMouseGesture 
+			    (e.Key == Key.Left || e.Key == Key.Right || e.Key == Key.Up || e.Key == Key.Down)) {
 				e.Handled = true;
 				
 				if (placementOp != null) {
@@ -424,6 +425,9 @@ namespace ICSharpCode.WpfDesign.Designer
 		
 		void DesignPanel_KeyDown(object sender, KeyEventArgs e)
 		{
+			// busy with mouse operation ignore keydown event.
+			if (Context.Services.AllServices.Any(a => a is DragMoveMouseGesture)) 
+				return;
 			//pass the key event down to the underlying objects if they have implemented IKeyUp interface
 			//OBS!!!! this call needs to be here, before the PlacementOperation.Start.
 			//In case the underlying object has a operation of its own this operation needs to be set first
@@ -485,22 +489,27 @@ namespace ICSharpCode.WpfDesign.Designer
 						dx[info] = 0;
 						dy[info] = 0;
 					}
-					var transform = info.Item.Parent.View.TransformToVisual(this);
-					var mt = transform as MatrixTransform;
-					if (mt != null) {
-						var angle = Math.Atan2(mt.Matrix.M21, mt.Matrix.M11) * 180 / Math.PI;
-						if (angle > 45.0 && angle < 135.0) {
-							dx[info] += ody * -1;
-							dy[info] += odx;
-						} else if (angle < -45.0 && angle > -135.0) {
-							dx[info] += ody;
-							dy[info] += odx * -1;
-						} else if (angle > 135.0 || angle < -135.0) {
-							dx[info] += odx * -1;
-							dy[info] += ody * -1;
-						} else {
-							dx[info] += odx;
-							dy[info] += ody;
+					if (info.Item.Parent != null) {
+						var transform = info.Item.Parent.View.TransformToVisual(this);
+						var mt = transform as MatrixTransform;
+						if (mt != null) {
+							var angle = Math.Atan2(mt.Matrix.M21, mt.Matrix.M11) * 180 / Math.PI;
+							if (angle > 45.0 && angle < 135.0) {
+								dx[info] += ody * -1;
+								dy[info] += odx;
+							}
+						    else if (angle < -45.0 && angle > -135.0) {
+								dx[info] += ody;
+								dy[info] += odx * -1;
+							}
+							else if (angle > 135.0 || angle < -135.0) {
+								dx[info] += odx * -1;
+								dy[info] += ody * -1;
+							}
+							else {
+								dx[info] += odx;
+								dy[info] += ody;
+							}
 						}
 					}
 

@@ -51,7 +51,12 @@ namespace ICSharpCode.WpfDesign.Designer.Controls
 		{
 			e.Handled = true;
 			//item.Services.Selection.SetSelectedComponents(new DesignItem [] { item }, SelectionTypes.Auto);
-			new DragMoveMouseGesture(item, false, true).Start(item.Services.DesignPanel, e);
+			// when a mouse movement happens, add it as a service
+			// so that when an arrow key on keyboard is pressed 
+			// the keypress should be ignored until mouse is released.
+			var mouseGesture = new DragMoveMouseGesture(item, false, true);
+			mouseGesture.Start(item.Services.DesignPanel, e);
+			item.Services.AddOrReplaceService(typeof(DragMoveMouseGesture), mouseGesture);
 		}
 		
 		public override void OnApplyTemplate()

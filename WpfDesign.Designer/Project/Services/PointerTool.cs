@@ -17,6 +17,7 @@
 // DEALINGS IN THE SOFTWARE.
 
 using System.Windows.Input;
+using ICSharpCode.WpfDesign.Designer.Xaml;
 
 namespace ICSharpCode.WpfDesign.Designer.Services
 {
@@ -62,7 +63,14 @@ namespace ICSharpCode.WpfDesign.Designer.Services
 							selectionService.SetSelectedComponents(new DesignItem[] { result.ModelHit }, SelectionTypes.Auto);
 						}
 						if (selectionService.IsComponentSelected(result.ModelHit)) {
-							new DragMoveMouseGesture(result.ModelHit, e.ClickCount == 2, setSelectionIfNotMoving).Start(designPanel, e);
+							// when a mouse movement happens, add it as a service
+							// so that when an arrow key on keyboard is pressed 
+							// the keypress should be ignored until mouse is released.
+							var mouseGesture = new DragMoveMouseGesture(result.ModelHit, e.ClickCount == 2, setSelectionIfNotMoving);
+							mouseGesture.Start(designPanel, e);
+							if (designPanel.Context is XamlDesignContext designContext) {
+								designContext.Services.AddOrReplaceService(typeof(DragMoveMouseGesture), mouseGesture);
+							}
 						}
 					}
 				}

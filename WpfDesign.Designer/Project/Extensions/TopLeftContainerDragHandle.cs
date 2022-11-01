@@ -41,7 +41,12 @@ namespace ICSharpCode.WpfDesign.Designer.Extensions
 			
 			rect.PreviewMouseDown += delegate(object sender, MouseButtonEventArgs e) {
 				//Services.Selection.SetSelectedComponents(new DesignItem[] { this.ExtendedItem }, SelectionTypes.Auto);
-				new DragMoveMouseGesture(this.ExtendedItem, false).Start(this.ExtendedItem.Services.DesignPanel,e);
+				// when a mouse movement happens, add it as a service
+				// so that when an arrow key on keyboard is pressed 
+				// the keypress should be ignored until mouse is released.
+				var mouseGesture = new DragMoveMouseGesture(this.ExtendedItem, false);
+				mouseGesture.Start(this.ExtendedItem.Services.DesignPanel,e);
+				Services.AddOrReplaceService(typeof(DragMoveMouseGesture), mouseGesture);
 				e.Handled=true;
 			};
 			

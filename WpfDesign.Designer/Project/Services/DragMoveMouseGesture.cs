@@ -70,6 +70,9 @@ namespace ICSharpCode.WpfDesign.Designer.Services
 		
 		protected override void OnStopped()
 		{
+			// Service was added when you called the start method
+			// remove the service when completed
+			services.RemoveService(typeof(DragMoveMouseGesture), this);
 			moveLogic.Cancel();
 		}
 	}
