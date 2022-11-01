@@ -93,6 +93,24 @@ namespace ICSharpCode.WpfDesign
 				subscriber.DynamicInvoke(serviceInstance);
 			}
 		}
+
+		/// <summary>
+		/// Removes an existing service 
+		/// </summary>
+		/// <param name="serviceInterface">
+		/// The type of the service interface to use as a key for the service.
+		/// </param>
+		/// <param name="serviceInstance">
+		/// The service instance implemented for the service interface to be removed.
+		/// </param>
+		public bool RemoveService(Type serviceInterface, object serviceInstance)
+		{
+			if (_services.ContainsKey(serviceInterface) && _services[serviceInterface] == serviceInstance)
+			{
+				return _services.Remove(serviceInterface);
+			}
+			return false;
+		}
 		
 		/// <summary>
 		/// Gets the service object of the specified type.
