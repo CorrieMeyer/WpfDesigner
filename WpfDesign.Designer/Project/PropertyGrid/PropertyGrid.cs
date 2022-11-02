@@ -281,7 +281,10 @@ namespace ICSharpCode.WpfDesign.Designer.PropertyGrid
 			if (!Metadata.IsBrowsable(designProperties[0])) return;
 
 			PropertyNode node;
-			if (nodeFromDescriptor.TryGetValue(md, out node)) {
+			if (this.SingleItem != null && nodeFromDescriptor.TryGetValue(md, out node) && node.FirstProperty.DeclaringType.FullName == this.SingleItem.Component?.GetType().FullName) {
+				node.Load(designProperties);
+			}
+			else if (this.SingleItem == null && nodeFromDescriptor.TryGetValue(md, out node)) {
 				node.Load(designProperties);
 			} else {
 				node = new PropertyNode();
@@ -294,6 +297,9 @@ namespace ICSharpCode.WpfDesign.Designer.PropertyGrid
 					node.Category = cat;
 				}
 				nodeFromDescriptor[md] = node;
+			}
+			if (md.Attributes.OfType<DisplayNameAttribute>().Any()) {
+				node.DisplayName = md.Attributes.OfType<DisplayNameAttribute>().FirstOrDefault().DisplayName;
 			}
 			node.IsVisible = true;
 			if (node.Category != null)

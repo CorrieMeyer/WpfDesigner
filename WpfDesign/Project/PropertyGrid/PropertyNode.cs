@@ -62,7 +62,7 @@ namespace ICSharpCode.WpfDesign.PropertyGrid
 					}
 				}
 
-				return FirstProperty.Name;
+				return DisplayName ?? FirstProperty.Name;
 			}
 		}
 		
@@ -295,6 +295,11 @@ namespace ICSharpCode.WpfDesign.PropertyGrid
 		public bool CanReset {
 			get { return IsSet; }
 		}
+		
+		/// <summary>
+		/// PropertyName displayed in PropertyGrid
+		/// </summary>
+		public string DisplayName { get; set; }
 		
 		/// <summary>
 		/// Resets the property.
