@@ -489,7 +489,7 @@ namespace ICSharpCode.WpfDesign.Designer
 						dx[info] = 0;
 						dy[info] = 0;
 					}
-					if (info.Item.Parent != null) {
+					if (info.Item?.Parent != null) {
 						var transform = info.Item.Parent.View.TransformToVisual(this);
 						var mt = transform as MatrixTransform;
 						if (mt != null) {
