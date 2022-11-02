@@ -26,10 +26,10 @@ namespace ICSharpCode.WpfDesign.Designer.Extensions
 	/// <summary>
 	/// 
 	/// </summary>
-	[ExtensionServer(typeof(OnlyOneItemSelectedExtensionServer))]
-	[ExtensionFor(typeof(Grid))]
-	[ExtensionFor(typeof(Canvas))]
-	[Extension(Order = 51)]
+	//[ExtensionServer(typeof(OnlyOneItemSelectedExtensionServer))]
+	//[ExtensionFor(typeof(Grid))]
+	//[ExtensionFor(typeof(Canvas))]
+	//[Extension(Order = 51)]
 	public class UnwrapItemContextMenuExtension : SelectionAdornerProvider
 	{
 		DesignPanel panel;

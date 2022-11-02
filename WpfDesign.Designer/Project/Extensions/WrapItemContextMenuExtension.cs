@@ -28,9 +28,9 @@ namespace ICSharpCode.WpfDesign.Designer.Extensions
 	/// <summary>
 	/// 
 	/// </summary>
-	[ExtensionServer(typeof(OnlyOneItemSelectedExtensionServer))]
-	[ExtensionFor(typeof(UIElement))]
-	[Extension(Order = 50)]
+	//[ExtensionServer(typeof(OnlyOneItemSelectedExtensionServer))]
+	//[ExtensionFor(typeof(UIElement))]
+	//[Extension(Order = 50)]
 	public class WrapItemContextMenuExtension : SelectionAdornerProvider
 	{
 		DesignPanel panel;
