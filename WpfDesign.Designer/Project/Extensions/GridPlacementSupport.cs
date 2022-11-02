@@ -171,14 +171,8 @@ namespace ICSharpCode.WpfDesign.Designer.Extensions
 		
 		static VerticalAlignment SuggestVerticalAlignment(Rect itemBounds, Rect availableSpaceRect)
 		{
-			bool isTop = itemBounds.Top < availableSpaceRect.Top + availableSpaceRect.Height / 4;
-			bool isBottom = itemBounds.Bottom > availableSpaceRect.Bottom - availableSpaceRect.Height / 4;
-			if (isTop && isBottom)
-				return VerticalAlignment.Stretch;
-			else if (isBottom)
-				return VerticalAlignment.Bottom;
-			else
-				return VerticalAlignment.Top;
+			// for our implementation force to top.
+			return VerticalAlignment.Top;
 		}
 		
 		public override void EnterContainer(PlacementOperation operation)
