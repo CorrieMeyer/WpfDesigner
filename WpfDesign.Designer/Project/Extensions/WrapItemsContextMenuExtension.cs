@@ -27,9 +27,9 @@ namespace ICSharpCode.WpfDesign.Designer.Extensions
 	/// <summary>
 	/// 
 	/// </summary>
-	[ExtensionServer(typeof(PrimarySelectionButOnlyWhenMultipleSelectedExtensionServer))]
-	[ExtensionFor(typeof(UIElement))]
-	[Extension(Order = 52)]
+	//[ExtensionServer(typeof(PrimarySelectionButOnlyWhenMultipleSelectedExtensionServer))]
+	//[ExtensionFor(typeof(UIElement))]
+	//[Extension(Order = 52)]
 	public class WrapItemsContextMenuExtension : SelectionAdornerProvider
 	{
 		DesignPanel panel;
