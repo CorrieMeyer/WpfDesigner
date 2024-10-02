@@ -14,9 +14,10 @@
     <copyright>Copyright (c) 2015-2021 IC#Code</copyright>
 	<language>en-US</language>
 	<tags>WPF XAML Designer UI Editor SharpDevelop WpfDesigner</tags>
-	<dependencies>
+    <dependencies>
       <group targetFramework=".NETFramework4.5" />
-	  <group targetFramework="net5.0-windows" />
+      <group targetFramework="net5.0-windows" />
+      <group targetFramework="net6.0-windows" />
     </dependencies>
   </metadata>
   <files>
@@ -24,5 +25,7 @@
     <file src="..\WpfDesign.Design.ExpressionBlendInteractionAddon\bin\Release\net45\ICSharpCode.WpfDesign.Designer.ExpressionBlendInteractionAddon.pdb" target="lib\net45" />	
     <file src="..\WpfDesign.Design.ExpressionBlendInteractionAddon\bin\Release\net5.0-windows\ICSharpCode.WpfDesign.Designer.ExpressionBlendInteractionAddon.dll" target="lib\net5.0-windows" />
     <file src="..\WpfDesign.Design.ExpressionBlendInteractionAddon\bin\Release\net5.0-windows\ICSharpCode.WpfDesign.Designer.ExpressionBlendInteractionAddon.pdb" target="lib\net5.0-windows" />	
+    <file src="..\WpfDesign.Design.ExpressionBlendInteractionAddon\bin\Release\net6.0-windows\ICSharpCode.WpfDesign.Designer.ExpressionBlendInteractionAddon.dll" target="lib\net6.0-windows" />
+    <file src="..\WpfDesign.Design.ExpressionBlendInteractionAddon\bin\Release\net6.0-windows\ICSharpCode.WpfDesign.Designer.ExpressionBlendInteractionAddon.pdb" target="lib\net6.0-windows" />	
   </files>
 </package>

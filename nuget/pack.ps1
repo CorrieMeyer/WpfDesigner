@@ -3,7 +3,7 @@ $root = (split-path -parent $MyInvocation.MyCommand.Definition) + '\..'
 Write-Host "root: $root"
 
 $version = [System.Reflection.Assembly]::LoadFile("$root\bin\net45\ICSharpCode.WpfDesign.dll").GetName().Version
-$versionStr = "{0}.{1}.{2}" -f ($version.Major, $version.Minor, $version.Build)
+$versionStr = "{0}.{1}.{2}.{3}" -f ($version.Major, $version.Minor, $version.Build, $version.Revision )
 
 Write-Host "Setting .nuspec version tag to $versionStr"
 
