@@ -37,6 +37,10 @@ namespace ICSharpCode.WpfDesign
 		/// Gets the property name.
 		/// </summary>
 		public abstract string Name { get; }
+		/// <summary>
+		/// Gets the property Display name.
+		/// </summary>
+		public abstract string DisplayName { get; }
 
 		/// <summary>
 		/// Gets the return type of the property.

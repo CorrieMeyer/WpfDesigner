@@ -71,7 +71,7 @@ namespace ICSharpCode.WpfDesign.PropertyGrid
 		/// <summary>
 		/// Creates a new PropertyNodeCollection instance.
 		/// </summary>
-		public PropertyNodeCollection() : base(n => n.Name)
+		public PropertyNodeCollection() : base(n => n.DisplayName)
 		{
 		}
 	}

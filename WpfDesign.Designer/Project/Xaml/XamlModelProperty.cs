@@ -85,6 +85,10 @@ namespace ICSharpCode.WpfDesign.Designer.Xaml
 			get { return _property.PropertyName; }
 		}
 		
+		public override string DisplayName {
+			get { return _property.PropertyDisplayName; }
+		}
+
 		public override bool IsCollection {
 			get { return _property.IsCollection; }
 		}

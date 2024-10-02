@@ -145,7 +145,7 @@
 											<DockPanel Width="{Binding FirstColumnWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type PropertyGrid:PropertyGridView}}}" DockPanel.Dock="Left">
 												<ToggleButton x:Name="expandButton" DockPanel.Dock="Left" Margin="{Binding Level, Converter={x:Static Converters:LevelConverter.Instance}}" Style="{StaticResource ExpandButtonStyle}" IsChecked="{Binding IsExpanded}" Visibility="{Binding HasChildren, Converter={x:Static Converters:HiddenWhenFalse.Instance}}" />
 												<Rectangle Width="8" Height="8" Stroke="Black" Fill="{Binding IsSet, Converter={x:Static Converters:BlackWhenTrue.Instance}}" StrokeThickness="1" DockPanel.Dock="Right" Margin="4,0,4,0" VerticalAlignment="Center" />
-												<TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" Margin="7 0 0 0" ToolTip="{Binding Description}" FontWeight="{Binding IsSet, Converter={x:Static Converters:BoldWhenTrue.Instance}}" Foreground="{Binding NameForeground}" />
+												<TextBlock Text="{Binding DisplayName}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" Margin="7 0 0 0" ToolTip="{Binding Description}" FontWeight="{Binding IsSet, Converter={x:Static Converters:BoldWhenTrue.Instance}}" Foreground="{Binding NameForeground}" />
 											</DockPanel>
 											<Border BorderThickness="1 0 0 0" BorderBrush="{x:Static SystemColors.ControlBrush}">
 												<ContentPresenter x:Name="editorContainer" Content="{Binding Editor}" VerticalAlignment="Center" Margin="3 0" />

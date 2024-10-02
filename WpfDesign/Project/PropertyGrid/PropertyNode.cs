@@ -65,7 +65,26 @@ namespace ICSharpCode.WpfDesign.PropertyGrid
 				return FirstProperty.Name;
 			}
 		}
-		
+
+		public string DisplayName
+		{
+			get
+			{
+				var dp = FirstProperty.DependencyProperty;
+				if (dp != null)
+				{
+					var dpd = DependencyPropertyDescriptor.FromProperty(dp, FirstProperty.DesignItem.ComponentType);
+					if (dpd.IsAttached)
+					{
+						// Will return the attached property name in the form of <DeclaringType>.<PropertyName>
+						return dpd.DisplayName;
+					}
+				}
+
+				return FirstProperty.DisplayName;
+			}
+		}
+
 		/// <summary>
 		/// Gets if this property node represents an event.
 		/// </summary>
@@ -342,6 +361,8 @@ namespace ICSharpCode.WpfDesign.PropertyGrid
 			RaisePropertyChanged("FontWeight");
 			RaisePropertyChanged("IsEnabled");
 			RaisePropertyChanged("NameForeground");
+			RaisePropertyChanged("Name");
+			RaisePropertyChanged("DisplayName");
 
 			UpdateChildren();
 		}

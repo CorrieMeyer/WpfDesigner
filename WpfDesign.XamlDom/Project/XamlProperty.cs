@@ -110,6 +110,14 @@ namespace ICSharpCode.WpfDesign.XamlDom
 		}
 		
 		/// <summary>
+		/// Gets the property Display name.
+		/// </summary>
+		public string PropertyDisplayName
+		{
+			get { return propertyInfo.DisplayName; }
+		}
+		
+		/// <summary>
 		/// Gets the type the property is declared on.
 		/// </summary>
 		public Type PropertyTargetType {

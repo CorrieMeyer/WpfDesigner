@@ -40,6 +40,7 @@ namespace ICSharpCode.WpfDesign.XamlDom
 		public abstract Type TargetType { get; }
 		public abstract Type ReturnType { get; }
 		public abstract string Name { get; }
+		public abstract string DisplayName { get; }
 		public abstract string FullyQualifiedName { get; }
 		public abstract bool IsAttached { get; }
 		public abstract bool IsCollection { get; }
@@ -94,6 +95,10 @@ namespace ICSharpCode.WpfDesign.XamlDom
 		
 		public override string Name {
 			get { return dependencyPropertyGetterName; }
+		}
+
+		public override string DisplayName {
+			get { return this.Name;}
 		}
 
 		public override string Category {
@@ -208,6 +213,10 @@ namespace ICSharpCode.WpfDesign.XamlDom
 			get { return _propertyDescriptor.Name; }
 		}
 		
+		public override string DisplayName {
+			get { return _propertyDescriptor.DisplayName; }
+		}
+
 		public override bool IsAttached {
 			get { return false; }
 		}
@@ -359,6 +368,10 @@ namespace ICSharpCode.WpfDesign.XamlDom
 			get { return _eventDescriptor.Name; }
 		}
 		
+		public override string DisplayName {
+			get { return _eventDescriptor.DisplayName; }
+		}
+
 		public override bool IsEvent {
 			get { return true; }
 		}
