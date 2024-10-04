@@ -159,14 +159,8 @@ namespace ICSharpCode.WpfDesign.Designer.Extensions
 		
 		static HorizontalAlignment SuggestHorizontalAlignment(Rect itemBounds, Rect availableSpaceRect)
 		{
-			bool isLeft = itemBounds.Left < availableSpaceRect.Left + availableSpaceRect.Width / 4;
-			bool isRight = itemBounds.Right > availableSpaceRect.Right - availableSpaceRect.Width / 4;
-			if (isLeft && isRight)
-				return HorizontalAlignment.Stretch;
-			else if (isRight)
-				return HorizontalAlignment.Right;
-			else
-				return HorizontalAlignment.Left;
+			// for our implementation force to Left.
+			return HorizontalAlignment.Left;
 		}
 		
 		static VerticalAlignment SuggestVerticalAlignment(Rect itemBounds, Rect availableSpaceRect)
