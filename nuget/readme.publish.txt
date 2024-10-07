@@ -1,0 +1,1 @@
+Get-ChildItem ".\" -Filter ICSharpCode.WpfDesigner.8.1.4.1.nupkg | Foreach-Object {dotnet nuget push --interactive -s https://nuget.key360.co.za/v3/index.json $_.FullName }
