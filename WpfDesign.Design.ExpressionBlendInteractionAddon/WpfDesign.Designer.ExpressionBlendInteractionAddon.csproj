@@ -5,9 +5,9 @@
 	<UseWPF>true</UseWPF>
 	<AssemblyName>ICSharpCode.WpfDesign.Designer.ExpressionBlendInteractionAddon</AssemblyName>
 	<RootNamespace>ICSharpCode.WpfDesign.Designer.ExpressionBlendInteractionAddon</RootNamespace>
-	<Version>8.1.4.1</Version>
-	<AssemblyVersion>8.1.4.1</AssemblyVersion>
-	<FileVersion>8.1.4.1</FileVersion>
+	<Version>8.1.4.2</Version>
+	<AssemblyVersion>8.1.4.2</AssemblyVersion>
+	<FileVersion>8.1.4.2</FileVersion>
 	<Company>ic#code</Company>
 	<Copyright>2000-2024 AlphaSierraPapa for the SharpDevelop Team</Copyright>
   </PropertyGroup>
