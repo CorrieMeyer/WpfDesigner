@@ -404,9 +404,8 @@ namespace ICSharpCode.WpfDesign.PropertyGrid
 			}
 
 			this.Properties = new ReadOnlyCollection<DesignItemProperty>(properties);
-
-			if (Editor == null)
-				Editor = EditorManager.CreateEditor(FirstProperty);
+			
+			Editor = EditorManager.CreateEditor(FirstProperty);
 
 			foreach (var property in properties) {
 				property.ValueChanged += new EventHandler(property_ValueChanged);
